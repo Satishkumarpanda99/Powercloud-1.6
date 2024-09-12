@@ -41,7 +41,7 @@ stages{
 	 stage('Run Container on Dev Server') {         
     steps{
 	       script {
-      def dockerRun = "docker run -p 8383:8080 -d --name newweb satishkumarpanda/webserver:$BUILD_NUMBER"
+      def dockerRun = "docker run -p 8383:8080 -d --name portfolio satishkumarpanda/webserver:$BUILD_NUMBER"
   
 	    sshagent(['webserver']){
       //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.134.52 ${dockerdel}"

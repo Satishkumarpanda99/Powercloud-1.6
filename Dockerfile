@@ -3,7 +3,7 @@ FROM tomcat:8.5
 
 #COPY
 COPY ./web/target/Power-Cloud-1.war /usr/local/tomcat/webapps/
-EXPOSE 8080
+EXPOSE 8383
 
 WORKDIR /usr/local/tomcat/webapps/
 

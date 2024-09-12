@@ -22,7 +22,7 @@ stages{
         }
     stage('Build Docker Image') {         
       steps{                
-	sh 'docker build -t satishkumarpanda/devopsweb:$BUILD_NUMBER .'           
+	sh 'docker build -t satishkumarpanda/webserver:$BUILD_NUMBER .'           
         echo 'Build Image Completed'                
       }           
     }   
@@ -34,14 +34,14 @@ stages{
     }
  stage('Push Image to Docker Hub') {         
       steps{                            
-	sh 'docker push satishkumarpanda/devopsweb:$BUILD_NUMBER'                 
+	sh 'docker push satishkumarpanda/webserver:$BUILD_NUMBER'                 
   echo 'Push Image Completed'       
       }           
     }
 	 stage('Run Container on Dev Server') {         
     steps{
 	       script {
-      def dockerRun = "docker run -p 8282:8080 -d --name myweb satishkumarpanda/devopsweb:$BUILD_NUMBER"
+      def dockerRun = "docker run -p 8282:8080 -d --name myweb satishkumarpanda/webserver:$BUILD_NUMBER"
   
 	    sshagent(['webserver']){
       //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.134.52 ${dockerdel}"
